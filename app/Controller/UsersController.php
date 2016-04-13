@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
     public function beforeFilter() {
-            $this->Auth->allow('add');
+        parent::beforeFilter();
         }
 /**
  * Components

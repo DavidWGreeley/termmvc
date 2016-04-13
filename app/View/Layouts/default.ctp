@@ -39,12 +39,21 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+                        
 		</div>
 		<div id="content">
+                    <div style="text-align: right;">
+                        <?php if ($logged_in): ?>
+                            Welcome <?php echo $current_user['username']; ?> <?php echo $this->Html->link('logout', array('controller'=>'users', 'action'=>'logout')); ?>
+                        <?php else: ?>
+                            <?php echo $this->Html->link('login', array('controller'=>'users', 'action'=>'login')); ?>
+                        <?php endif; ?>
+                    </div>
 
 			<?php echo $this->Flash->render(); ?>
 
 			<?php echo $this->fetch('content'); ?>
+                    
 		</div>
 		<div id="footer">
 			<?php echo $this->Html->link(

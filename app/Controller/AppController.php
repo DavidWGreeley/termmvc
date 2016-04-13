@@ -33,4 +33,20 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
         public $components = array('DebugKit.Toolbar', 'Session', 'Auth'
             );
+        
+            public function isAuthorized($user) {
+            if(empty ($this->request->params['prefix'])) {
+                return true;
+            }
+            if($this->request->params['prefix'] == 'admin') {
+                return ($user['role'] == '2');
+            }
+            return false;
+        }
+        public function beforeFilter() {
+            $this->Auth->allow('index','view');
+            $this->set('logged_in', $this->Auth->loggedIn());
+            $this->set('current_user', $this->Auth->user());
+    }
+        
 }
