@@ -42,7 +42,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         
 		</div>
 		<div id="content">
-                    <div style="text-align: right;">
+                    <div style="text-align: left;">
                         <?php if ($logged_in): ?>
                             Welcome <?php echo $current_user['username']; ?> <?php echo $this->Html->link('logout', array('controller'=>'users', 'action'=>'logout')); ?>
                         <?php else: ?>

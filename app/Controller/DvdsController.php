@@ -9,7 +9,10 @@ App::uses('AppController', 'Controller');
  * @property SessionComponent $Session
  */
 class DvdsController extends AppController {
-
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('index', 'view');
+    }
 /**
  * Components
  *
